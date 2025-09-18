@@ -98,9 +98,3 @@ payment_failures_total{error="timeout"} 57
 
 *"In a distributed Payment Service, we use ELK for logging, Prometheus + Grafana for metrics, and Jaeger for tracing. For example, if payments are failing, ELK shows exact error logs, Prometheus shows rising error rate and latency in dashboards, and Jaeger shows that Bank API is the bottleneck. This combination ensures quick root cause analysis and proactive monitoring."*
 
-```
-
----
-
-Do you want me to also generate a **diagram (architecture flow)** in markdown (using Mermaid) that visually shows **how ELK, Prometheus/Grafana, and Jaeger connect to a Payment Service**?
-```

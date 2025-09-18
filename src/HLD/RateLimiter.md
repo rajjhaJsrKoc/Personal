@@ -70,33 +70,26 @@ The system limits API requests per user/IP over a configurable time window. It i
 
 ## Rate Limiting Flow
 
-```plantuml
-@startuml
-title Rate Limiter Flow
+```mermaid
+sequenceDiagram
+    participant Client
+    participant APIGW as API Gateway / Middleware
+    participant RL as RateLimiter Service
+    participant Redis as Redis / Token Storage
+    participant AppServer as Application Server
 
-actor Client
-entity "API Gateway / Middleware" as APIGW
-entity "RateLimiter Service" as RL
-database "Redis / Token Storage" as Redis
-entity "Application Server" as AppServer
+    Client ->> APIGW: Send API request
+    APIGW ->> RL: Check rate limit
+    RL ->> Redis: Fetch / Update tokens
+    Redis -->> RL: Return token status
 
-Client -> APIGW : Send API request
-APIGW -> RL : Check rate limit
-RL -> Redis : Fetch / Update tokens
-Redis --> RL : Return token status
+    alt Allowed
+        RL ->> AppServer: Forward request
+        AppServer -->> Client: Response
+    else Rejected
+        RL -->> Client: 429 Too Many Requests
+    end
 
-alt Allowed
-    RL -> AppServer : Forward request
-    AppServer --> Client : Response
-else Rejected
-    RL --> Client : 429 Too Many Requests
-end
+    Note right of RL: RateLimiter Logic:\n* Check token count\n* Refill tokens if needed\n* Consume token if allowed
 
-note right of RL
-  RateLimiter Logic:
-  * Check token count
-  * Refill tokens if needed
-  * Consume token if allowed
-end note
 
-@enduml

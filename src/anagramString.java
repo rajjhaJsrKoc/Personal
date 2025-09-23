@@ -1,10 +1,11 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class anagramString {
     public static void main(String args[]) {
 
-        String string2 = "rajti";
+        String string2 = "rajta";
         String string1 = "rajat";
         Boolean ans = findiftwoStringAnagram(string1,string2);
         System.out.println("The maximum  consecutive 1's are " + ans);
@@ -44,6 +45,13 @@ public class anagramString {
         for (char c : string2.toCharArray()) {
             index[c-'a']--;
         }
-        //Arrays.stream(index).filter(x -> x!=0).forEach(x->System.out.println("It is Anagram"));
+
+        boolean isAnagram = Arrays.stream(index).allMatch(x -> x == 0);
+
+        if (isAnagram) {
+            System.out.println("It is Anagram");
+        } else {
+            System.out.println("It is not Anagram");
+        }
     }
 }

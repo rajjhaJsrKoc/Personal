@@ -4,7 +4,8 @@ import java.util.Stack;
 public class MonolothicDecreasingStackTemperature {
     public static int[] dailyTemperatures(int[] temperatures) {
         int n = temperatures.length;
-        int[] result = new int[n]; // Result array initialized with 0s
+        int[] result = new int[n];
+        Arrays.fill(result,0);// Result array initialized with 0s
         Stack<Integer> stack = new Stack<>(); // Monotonic decreasing stack (stores indices)
 
         // Iterate through the temperature array

@@ -48,6 +48,9 @@ class MyHashMap<K, V> {
 
         // insert at headṄ
         Node<K, V> newNode = new Node<>(key, value);
+        // value comes as (1,"Rajat")
+        // curr is null 1 doesn't exit
+        // create new node with same value and point next to the head
         newNode.next = head;// .next is just an indicator simple as that
         buckets[index] = newNode;
         size++;

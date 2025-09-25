@@ -46,7 +46,7 @@ class MyHashMap<K, V> {
             curr = curr.next;
         }
 
-        // insert at head
+        // insert at headṄ
         Node<K, V> newNode = new Node<>(key, value);
         newNode.next = head;// .next is just an indicator simple as that
         buckets[index] = newNode;
@@ -73,17 +73,18 @@ class MyHashMap<K, V> {
         Node<K, V> prev = null;
 
         while (curr != null) {
+            //key =2
             if (curr.key.equals(key)) {
                 if (prev == null) {
                     buckets[index] = curr.next;
                 } else {
                     prev.next = curr.next;
                 }
-               // Head →  [Apple] → [Banana] → [Mango] → null
-                // Head → [Apple] → [Mango] → null
                 size--;
                 return curr.value;
-            }
+            }      // 1 (pre)      2 (curr)    3
+            // Head →  [Apple] → [Banana] → [Mango] → null
+            // Head → [Apple] → [Mango] → null
             prev = curr;
             curr = curr.next;
         }

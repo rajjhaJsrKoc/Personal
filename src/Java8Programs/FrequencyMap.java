@@ -190,6 +190,10 @@ public class FrequencyMap {
         System.out.println("27 3rd highest salary in Array");
         List elements = Arrays.asList(1,2,3,4,5,1,2,6);
         elements.stream().sorted(Comparator.reverseOrder()).skip(2).findFirst().ifPresent(e -> System.out.println(e));
+        System.out.println("27 separate the even and odd numbers using Java Stream API.");
+        Map<Boolean, List<Integer>> partitioned = num2.stream()
+                .collect(Collectors.partitioningBy(num -> num % 2 == 0));
+
 
     }
 }

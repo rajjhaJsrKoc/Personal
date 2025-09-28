@@ -17,9 +17,10 @@ public class DublicateElement {
             fast = arr[arr[fast]];
         }while(fast != slow);
 
+        slow = arr[0];
         while (slow != fast) {
             slow = arr[slow];
-            fast = arr[arr[fast]];
+            fast = arr[fast];
         }
         return slow;
     }

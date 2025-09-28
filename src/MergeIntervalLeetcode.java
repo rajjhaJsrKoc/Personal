@@ -11,10 +11,12 @@ public class MergeIntervalLeetcode {
         if(interval.length<=1)
             return;
         Arrays.sort(interval,Comparator.comparingInt(i -> i[0]));
+        //Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
         ArrayList<int[]> res = new ArrayList<>();
         int[] newInterval = interval[0];
         res.add(newInterval);
-        for(int[] singleInterval : interval) {
+        for(int i=1;i<interval.length;i++) {
+            int[] singleInterval = interval[i];
             if(singleInterval[0] <=newInterval[1]) {
                 newInterval[1]=Math.max(singleInterval[1],newInterval[1]);
             }else {

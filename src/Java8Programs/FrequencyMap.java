@@ -191,8 +191,26 @@ public class FrequencyMap {
         List elements = Arrays.asList(1,2,3,4,5,1,2,6);
         elements.stream().sorted(Comparator.reverseOrder()).skip(2).findFirst().ifPresent(e -> System.out.println(e));
         System.out.println("27 separate the even and odd numbers using Java Stream API.");
-        Map<Boolean, List<Integer>> partitioned = num2.stream()
-                .collect(Collectors.partitioningBy(num -> num % 2 == 0));
+        num2.stream()
+                .collect(Collectors.partitioningBy(num -> num % 2 == 0)).entrySet().stream()
+                .forEach(e -> System.out.println(e.getKey() +" : " +e.getValue()));
+
+        System.out.println("28. find dublicated in array");
+        int[] num3 = {1,2,3,5,6,7,7,8};
+        HashSet seen = new HashSet<>();
+        for (int i = 0; i < num3.length; i++){
+            if (!seen.add(num3[i])){
+                System.out.println(num3[i]);
+            }
+
+        }
+        Arrays.stream(num3)
+                .boxed()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(e -> e.getValue() > 1)
+                .forEach(e -> System.out.println("Duplicate: " + e.getKey()));
 
 
     }

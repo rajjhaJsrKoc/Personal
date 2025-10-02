@@ -10,7 +10,7 @@ public class ExcecuterCallableFutureExample {
             Thread.sleep(1000);
             return 42;
         };
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
                 2,                       // core pool size
                 4,                       // max pool size
                 10, TimeUnit.SECONDS,    // keep-alive time
@@ -23,13 +23,13 @@ public class ExcecuterCallableFutureExample {
         Runnable task2 = (() ->{
            System.out.println("Inside Runnable Task");
         });
-        executor.execute(task2);
+        threadPoolExecutor.execute(task2);
         // see if we execute then it is runnable then it will not return a future if
         // if callable because it return the value then we use submit plus future object reference and use get used blow
         System.out.println("Result: " + future.get()); // blocks until task finishes
         executorService.shutdown();
-        executor.shutdown();
-        executor.awaitTermination(10, TimeUnit.SECONDS);
+        threadPoolExecutor.shutdown();
+        threadPoolExecutor.awaitTermination(10, TimeUnit.SECONDS);
     }
 
     /*

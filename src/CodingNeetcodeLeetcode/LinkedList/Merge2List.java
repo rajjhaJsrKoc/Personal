@@ -1,4 +1,4 @@
-package LinkedList;
+package CodingNeetcodeLeetcode.LinkedList;
 
 public class Merge2List {
     public static void main(String[] args) {

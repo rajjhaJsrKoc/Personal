@@ -1,4 +1,4 @@
-package LinkedList;
+package CodingNeetcodeLeetcode.LinkedList;
 
 public class RotateLinkedList {
      public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package LinkedList;
+package CodingNeetcodeLeetcode.LinkedList;
 
 class LinkedList {
     int d;
@@ -11,8 +11,8 @@ class LinkedList {
 }
 /*
 
-public static int findDuplicateSorted(LinkedList head) {
-    LinkedList curr = head;
+public static int findDuplicateSorted(CodingNeetcodeLeetcode.LinkedList head) {
+    CodingNeetcodeLeetcode.LinkedList curr = head;
     while (curr != null && curr.next != null) {
         if (curr.d == curr.next.d) {
             return curr.d; // duplicate
@@ -22,9 +22,9 @@ public static int findDuplicateSorted(LinkedList head) {
     return -1;
 }
 
-public static int findDuplicate(LinkedList head) {
+public static int findDuplicate(CodingNeetcodeLeetcode.LinkedList head) {
         HashSet<Integer> seen = new HashSet<>();
-        LinkedList curr = head;
+        CodingNeetcodeLeetcode.LinkedList curr = head;
 
         while (curr != null) {
             if (seen.contains(curr.d)) {

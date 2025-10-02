@@ -1,3 +1,5 @@
+package CodingNeetcodeLeetcode.Merge;
+
 import java.util.Arrays;
 
 public class MergeTwoArray {

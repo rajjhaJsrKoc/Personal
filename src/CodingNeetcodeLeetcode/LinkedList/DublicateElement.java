@@ -1,4 +1,4 @@
-package LinkedList;
+package CodingNeetcodeLeetcode.LinkedList;
 
 public class DublicateElement {
     public static void main(String[] args) {

@@ -183,10 +183,9 @@ public class FrequencyMap {
                 .entrySet().stream().
                 filter(e -> (e.getValue()==1))
                 .findFirst().ifPresent(e -> System.out.println(e.getKey() +" : " +e.getValue()));
-        /*String mostFrequent = freqMap.entrySet().stream()
+      /*  String mostFrequent = freqMap.entrySet().stream()
                 .max(Map.Entry.comparingByValue())
-                .get().getKey();
-*/
+                .get().getKey();*/
         System.out.println("27 3rd highest salary in Array");
         List elements = Arrays.asList(1,2,3,4,5,1,2,6);
         elements.stream().sorted(Comparator.reverseOrder()).skip(2).findFirst().ifPresent(e -> System.out.println(e));
@@ -228,6 +227,31 @@ public class FrequencyMap {
         c3.setList(cities);
 
         c3.getList().stream().max(Comparator.comparingInt(City::getPopulation)).ifPresent(e -> System.out.println(e));
+
+        System.out.println("30. Arrange in asending order of interval  ");
+        List<Integer> values3 = Arrays.asList(1, 2, 3, 4, 5, 6, 6, 6, 4, 4, 4);
+        values3.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream().sorted((a, b) -> Long.compare(b.getValue(), a.getValue()))
+                .flatMap(e -> Collections.nCopies(e.getValue().intValue(), e.getKey()).stream())
+                .forEach(System.out::println);
+
+        Stream<Integer> infiniteStream = Stream.iterate(0, n -> n + 1);
+
+        // Limit the stream to the first 10 elements and print them
+        infiniteStream.limit(10)
+                .forEach(System.out::println);
+        Stream.generate(() -> "hello")
+                .limit(3)
+                .forEach(System.out::println);
+
+        String order = "trwwrrr";
+        order.chars().mapToObj(c ->(char)c).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+                .entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .flatMap(e -> Collections.nCopies(e.getValue().intValue(), e.getKey()).stream())
+                .forEach(System.out::print);
+
 
     }
 }

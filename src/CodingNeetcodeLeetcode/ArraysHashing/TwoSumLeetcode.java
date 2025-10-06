@@ -1,3 +1,5 @@
+package CodingNeetcodeLeetcode.ArraysHashing;
+
 import java.util.*;
 
 public class TwoSumLeetcode {

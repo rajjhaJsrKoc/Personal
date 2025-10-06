@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package CodingNeetcodeLeetcode.ArraysHashing;
 
 public class missingArrayInSeries {
     public static int missingNumber(int []a, int N) {

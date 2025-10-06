@@ -1,3 +1,5 @@
+package CodingNeetcodeLeetcode.ArraysHashing;
+
 public class MoveNonZeroToOneSide {
 
     // two pointers

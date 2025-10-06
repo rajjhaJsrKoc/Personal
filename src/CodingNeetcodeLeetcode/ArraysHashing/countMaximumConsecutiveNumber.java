@@ -1,3 +1,5 @@
+package CodingNeetcodeLeetcode.ArraysHashing;
+
 public class countMaximumConsecutiveNumber {
     static int findMaxConsecutiveOnes(int nums[]) {
         int cnt = 0;

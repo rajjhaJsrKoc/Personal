@@ -212,6 +212,22 @@ public class FrequencyMap {
                 .filter(e -> e.getValue() > 1)
                 .forEach(e -> System.out.println("Duplicate: " + e.getKey()));
 
+        System.out.println("28. find first dublicate character string in array ");
+        String s = "asdfaghjklkjhgfdsa";
+        Set<Character> seen2 = new HashSet<>();
+        s.chars().mapToObj(c -> (char)c).filter(c -> !seen2.add(c)).findFirst().ifPresent(e -> System.out.println(e));
+
+
+        System.out.println("29. find maximum of city with country in array ");
+        City c1 = new City("Barcelona",1222);
+        City c2 = new City("Madrid",121);
+        Country c3 = new Country("Spain");
+        List<City> cities = new ArrayList<>();
+        cities.add(c1);
+        cities.add(c2);
+        c3.setList(cities);
+
+        c3.getList().stream().max(Comparator.comparingInt(City::getPopulation)).ifPresent(e -> System.out.println(e));
 
     }
 }

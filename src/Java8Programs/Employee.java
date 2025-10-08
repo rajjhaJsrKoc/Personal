@@ -1,6 +1,8 @@
 package Java8Programs;
 public class Employee {
     public Employee(String test1, int i) {
+        this.name = test1;
+        this.salary= i;
     }
 
     public String getName() {

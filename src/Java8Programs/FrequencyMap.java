@@ -93,6 +93,7 @@ public class FrequencyMap {
         System.out.println("15). Write a program in stream to print 10 random.?");
 
         Random random = new Random();
+        Stream.iterate(0,x -> x+1).limit(10).forEach(System.out::println);
 
         Stream.generate(random::nextInt).limit(10).forEach(System.out::println);
 
@@ -147,8 +148,9 @@ public class FrequencyMap {
         employees.add(employee2);
         employees.add(employee3);
         employees.add(employee4);
-
+        employees.stream().forEach(employee -> System.out.println(employee.getSalary() +"test"+ employee.getName()));
         System.out.println(employees.stream().mapToDouble(Employee::getSalary).sum());
+        employees.stream().collect(Collectors.toList()).forEach(System.out::println);
 
         System.out.println("22). Write a program to print the count of each character in a String using stream ?");
 
@@ -160,7 +162,7 @@ public class FrequencyMap {
 
         System.out.println("23). How to convert a List of objects into a Map by considering duplicated keys and store them in sorted order?");
 
-        /*Map<String,Double> uniqueEmployee = employees.stream().collect(Collectors.toMap(Employee::getName,Employee::getSalary,
+       /* Map<String,Double> uniqueEmployee = employees.stream().collect(Collectors.toMap(Employee::getName,Employee::getSalary,
                 (existing,replacement)->existing,()-> new TreeMap<>(Comparator.naturalOrder())));
 
         System.out.println(uniqueEmployee);*/

@@ -44,6 +44,7 @@ public class TwoSumLeetcode {
     public static int prefixSum(int[] nums, int target) {
         Map frequency = new HashMap();
         frequency.put(0, 1);
+        // so there can be a case where it starts with 0 and has value
         int prefixSum = 0,count = 0;
         for (int i = 0; i < nums.length; i++) {
             prefixSum += nums[i];
@@ -64,7 +65,58 @@ public class TwoSumLeetcode {
         String ans = twoSum(n, arr, target);
         boolean ans2 = twoSum(arr, target);
         System.out.println("This is the answer for variant 1: " + ans);
+        returnSubarraysIndexs(arr,target);
+        returnSubarrays(arr,target);
 
+    }
+
+    private static void returnSubarraysIndexs(int[] arr, int target) {
+        Map<Integer,List<Integer>> map = new HashMap<>();
+        ArrayList<int []> result = new ArrayList<>();
+
+        int prefix =0;
+        map.put(0, new ArrayList<>(List.of(-1)));
+        for (int i = 0; i < arr.length; i ++){
+            prefix += arr[i];
+            if (map.get(prefix- target)!= null){
+                for (int startIndex : map.get(prefix - target)) {
+                    result.add(new int[]{startIndex + 1, i});
+                }
+            }
+            if (!map.containsKey(prefix)){
+                map.put(prefix, new ArrayList<>());
+            }
+            map.get(prefix).add(i);
+        }
+        result.stream()
+                .forEach(arr1 -> System.out.println(Arrays.toString(arr1)));
+    }
+    private static void returnSubarrays(int[] arr, int target) {
+        Map<Integer,List<Integer>> map = new HashMap<>();
+        ArrayList<int []> result = new ArrayList<>();
+
+        int prefix =0;
+        map.put(0, new ArrayList<>(List.of(-1)));
+        for (int i = 0; i < arr.length; i ++){
+            prefix += arr[i];
+            if (map.get(prefix- target)!= null){
+                for (int startIndex : map.get(prefix - target)) {
+                    int k =0;
+                    int [] arr2 = new int[i-startIndex];
+                    for (int start = startIndex+1; start< i ;start++ ){
+                        arr2[k++] =arr[start];
+                    }
+                    result.add(arr2);
+                }
+            }
+
+            if (!map.containsKey(prefix)){
+                map.put(prefix, new ArrayList<>());
+            }
+            map.get(prefix).add(i);
+        }
+        result.stream()
+                .forEach(arr1 -> System.out.println(Arrays.toString(arr1)));
     }
 
 }

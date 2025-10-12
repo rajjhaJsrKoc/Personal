@@ -1,3 +1,5 @@
+package CodingNeetcodeLeetcode.ArraysHashing;
+
 import java.util.Arrays;
 
 public class ProductOfArrayExceptSelf {
@@ -22,8 +24,6 @@ public class ProductOfArrayExceptSelf {
         for (int i = 0; i < ars.length; i++) {
             product[i] = prefix[i]*suffix[i];
         }
-
         Arrays.stream(product).forEach(e -> System.out.print(e + " "));
-
     }
 }

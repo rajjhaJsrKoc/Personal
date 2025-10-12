@@ -1,4 +1,4 @@
-package CodingNeetcodeLeetcode.SlidingWindowAndTwoPointer;
+package CodingNeetcodeLeetcode.TwoPointers;
 
 import java.util.Arrays;
 

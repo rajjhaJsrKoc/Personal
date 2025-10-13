@@ -1,3 +1,5 @@
+package CodingNeetcodeLeetcode.stack;
+
 import java.util.Stack;
 
 public class BalancedParenthesis {

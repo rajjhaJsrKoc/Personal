@@ -6,11 +6,9 @@ public class MaximumSumOfSubArray {
         int sum = array[0];
         int maximum = 0;
         for (int i = 1; i < array.length; i++) {
-
             sum=Math.max(array[i]+sum, array[i]);
             maximum=Math.max(maximum,sum);
         }
         System.out.println(maximum);
-
     }
 }

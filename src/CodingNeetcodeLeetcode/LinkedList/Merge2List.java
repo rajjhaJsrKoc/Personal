@@ -9,6 +9,8 @@ public class Merge2List {
         LinkedList list2 = new LinkedList(4);
         list2.next = new LinkedList(5);
         list2.next.next = new LinkedList(6);
+        list2.next.next.next = new LinkedList(8);
+        list2.next.next.next.next = new LinkedList(9);
 
 
         LinkedList merged = MergeListFunction(list1,list2);

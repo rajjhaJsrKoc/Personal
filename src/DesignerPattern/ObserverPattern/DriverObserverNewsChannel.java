@@ -13,6 +13,6 @@ public class DriverObserverNewsChannel {
         newAgency.setObserver(channel1);
         newAgency.setObserver(channel2);
         newAgency.setObserver(channel3);
-        newAgency.setNews("ciENA KI MAA KA");
+        newAgency.setNews("ciENA");
     }
 }

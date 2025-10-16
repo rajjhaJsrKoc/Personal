@@ -11,6 +11,8 @@ public class KclosestPointToOrigin {
     }
 
     private static void clostestToOrigin(int[][] points, int k) {
+       // PriorityQueue<Integer> pq1 = new PriorityQueue<>((a,b)-> a-b);
+        //Max heap
         PriorityQueue<int[]> pq = new PriorityQueue<int[]>((a,b)->getDistance(b)-getDistance(a));
         for(int[] point: points){
             pq.add(point);

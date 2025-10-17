@@ -23,7 +23,6 @@ public class anagramString {
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
         for (char c : string1.toCharArray()) {
                 map.put(c, map.getOrDefault(c,0)+1);
-
         }
         for (char c : string2.toCharArray()) {
                 map.put(c, map.getOrDefault(c,0)-1);

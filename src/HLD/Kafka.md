@@ -134,6 +134,20 @@ Topic --> P2
 
 ```
 ---
+          Topic: orders
+          ┌─────────────┐
+          │ Partition 0 │───> Consumer C1 (group: order-service)
+          ├─────────────┤
+          │ Partition 1 │───> Consumer C2 (group: order-service)
+          ├─────────────┤
+          │ Partition 2 │───> Consumer C1 or C2 (balanced)
+          └─────────────┘
+          
+          ┌─────────────┐
+          │ Partition 0 │───> Consumer C3 (group: analytics-service)
+          │ Partition 1 │───> Consumer C3
+          │ Partition 2 │───> Consumer C3
+          └─────────────┘
 
 ## 🔹 Summary
 

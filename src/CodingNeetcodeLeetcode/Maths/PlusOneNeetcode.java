@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class PlusOneNeetcode {
     public static void main(String[] args){
-        int[] digits = {2, 9, 9};
+        int[] digits = {9, 9, 9};
 
          Arrays.stream(plusOne(digits)).forEach(System.out::println);
     }

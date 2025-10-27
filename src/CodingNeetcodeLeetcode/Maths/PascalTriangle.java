@@ -19,7 +19,7 @@ public class PascalTriangle {
     }
     public static List<Integer> nCrFormula(int i){
         List<Integer> rowResult = new ArrayList<>();
-            rowResult.add(1);
+        rowResult.add(1);
         int res = 1;
         for (int j = 1;j<i;j++){
             res = res*(i-j);

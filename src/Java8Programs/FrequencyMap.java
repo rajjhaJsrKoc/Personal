@@ -4,6 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class FrequencyMap {
@@ -254,7 +255,31 @@ public class FrequencyMap {
                 .flatMap(e -> Collections.nCopies(e.getValue().intValue(), e.getKey()).stream())
                 .forEach(System.out::print);
 
+        String s5= "Java articles are Awesome";
+        s5.chars().mapToObj(c -> (char)c).filter(ch -> ch != ' ' ).collect(Collectors.groupingBy(Function.identity(),Collectors.counting())).entrySet().stream()
+                .filter(e -> e.getValue()>1).filter(e->e.getKey()!= ' ').findFirst().ifPresent(System.out::println);
+        Character firstDuplicate = s.toLowerCase()
+                .chars()
+                .mapToObj(c -> (char) c)
+                .filter(ch -> ch != ' ')
+                .collect(Collectors.toMap(Function.identity(), c -> 1, Integer::sum, LinkedHashMap::new   // preserves insertion order
+                ))
+                .entrySet()
+                .stream()
+                .filter(e -> e.getValue() > 1)
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(null);
+        String s6 = "raajjtt";
+        Optional<String> firstPair = IntStream.range(0, s6.length() - 1)
+                .mapToObj(i -> s6.substring(i, i + 2))           // take every 2-char substring
+                .filter(pair -> Character.toLowerCase(pair.charAt(0)) == Character.toLowerCase(pair.charAt(1))) // keep only pairs with same letters
+                .findFirst();                                    // find first matching pair
 
+        firstPair.ifPresentOrElse(
+                pair -> System.out.println("First consecutive duplicate: " + pair),
+                () -> System.out.println("No consecutive duplicates found")
+        );
     }
 }
 /*

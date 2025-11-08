@@ -19,7 +19,7 @@ public class BalancedParenthesis {
                 }
             }
         }
-        return stack.isEmpty(); // all opened brackets matched
+        return stack.isEmpty();
     }
 
     public static void main(String[] args) {

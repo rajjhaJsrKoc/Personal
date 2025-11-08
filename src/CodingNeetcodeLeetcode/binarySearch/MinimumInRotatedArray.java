@@ -5,7 +5,7 @@ public class MinimumInRotatedArray {
         int[] arr = {3,4,5,1,2,};
         int ans = Integer.MAX_VALUE;
         int low =0,high= arr.length-1;
-        while(low<high){
+        while(low<=high){
             int mid = (low+high)/2;
             if (arr[mid]<=arr[high]){
                 ans = Math.min(arr[mid],ans);

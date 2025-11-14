@@ -12,7 +12,7 @@ public class SearchInSorted2dArray {
         int low=0,high = colsize *rowSize -1;
         while (low<= high){
             int mid =(high+low)/2;
-            int row = mid/rowSize;
+            int row = mid/colsize;
             int col = mid%colsize;
             if (matrix[row][col]== target){
                 System.out.println(matrix[row][col]);

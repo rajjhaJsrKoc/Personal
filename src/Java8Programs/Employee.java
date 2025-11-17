@@ -1,8 +1,9 @@
 package Java8Programs;
 public class Employee {
-    public Employee(String test1, int i) {
+    public Employee(String test1, int i, String department) {
         this.name = test1;
         this.salary= i;
+        this.department = department;
     }
 
     public String getName() {
@@ -24,6 +25,16 @@ public class Employee {
     private String name;
 
     private double salary;
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    private String department;
 
     @Override
     public String toString() {

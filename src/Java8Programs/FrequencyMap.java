@@ -138,10 +138,10 @@ public class FrequencyMap {
 
         System.out.println("21). Write a Program to give sum of salary of employee.?");
 
-        Employee employee1=new Employee("test1",1000);
-        Employee employee2=new Employee("test2",2000);
-        Employee employee3=new Employee("test3",3000);
-        Employee employee4=new Employee("test1",4000);
+        Employee employee1=new Employee("test1",1000,"Hr");
+        Employee employee2=new Employee("test2",2000,"TECH");
+        Employee employee3=new Employee("test3",3000,"TECH");
+        Employee employee4=new Employee("test1",4000,"Audit");
 
         List<Employee> employees=new ArrayList<>();
 
@@ -150,6 +150,19 @@ public class FrequencyMap {
         employees.add(employee3);
         employees.add(employee4);
         employees.stream().forEach(employee -> System.out.println(employee.getSalary() +"test"+ employee.getName()));
+        employees.stream().sorted(Comparator.comparing(Employee::getSalary)).limit(2).collect(Collectors.toList());
+        Map<String,List<Employee>> map6 = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::getDepartment,
+                        Collectors.collectingAndThen(
+                                Collectors.toList(),
+                                list3 -> list3.stream()
+                                        .sorted(Comparator.comparing(Employee::getSalary))
+                                        .limit(10)
+                                        .collect(Collectors.toList())
+                        )
+                ));
+        map6.entrySet().stream().flatMap(e->e.getValue().stream()).forEach(e->System.out.println("values are:"+ e.getSalary()));
         System.out.println(employees.stream().mapToDouble(Employee::getSalary).sum());
         employees.stream().collect(Collectors.toList()).forEach(System.out::println);
 
@@ -163,10 +176,10 @@ public class FrequencyMap {
 
         System.out.println("23). How to convert a List of objects into a Map by considering duplicated keys and store them in sorted order?");
 
-       /* Map<String,Double> uniqueEmployee = employees.stream().collect(Collectors.toMap(Employee::getName,Employee::getSalary,
+        Map<String,Double> uniqueEmployee = employees.stream().collect(Collectors.toMap(Employee::getName,Employee::getSalary,
                 (existing,replacement)->existing,()-> new TreeMap<>(Comparator.naturalOrder())));
 
-        System.out.println(uniqueEmployee);*/
+        System.out.println(uniqueEmployee);
 
         System.out.println("24). Given a String, find the first non-repeated character in it using Stream functions?");
 
@@ -190,8 +203,8 @@ public class FrequencyMap {
                 .max(Map.Entry.comparingByValue())
                 .get().getKey();*/
         System.out.println("27 3rd highest salary in Array");
-        List elements = Arrays.asList(1,2,3,4,5,1,2,6);
-        elements.stream().sorted(Comparator.reverseOrder()).skip(2).findFirst().ifPresent(e -> System.out.println(e));
+        List<Integer> elements = Arrays.asList(1,2,3,4,5,1,2,6);
+        elements.stream().sorted((a,b)->b-a).skip(2).findFirst().ifPresent(e -> System.out.println(e));
         System.out.println("27 separate the even and odd numbers using Java Stream API.");
         num2.stream()
                 .collect(Collectors.partitioningBy(num -> num % 2 == 0)).entrySet().stream()

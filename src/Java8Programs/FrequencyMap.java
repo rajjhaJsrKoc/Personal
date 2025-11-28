@@ -293,6 +293,13 @@ public class FrequencyMap {
                 pair -> System.out.println("First consecutive duplicate: " + pair),
                 () -> System.out.println("No consecutive duplicates found")
         );
+        List<Integer> listNew = Arrays.asList(1,2,3,4,5);
+        System.out.println("31. Sum without using sum()");
+        int total = listNew.stream()
+                .reduce(0, (a, b) -> a + b);
+        IntStream.range(0,s6.length()-1).mapToObj(i -> s6.substring(i, i+2))
+                .filter(pair ->Character.toLowerCase(pair.charAt(1))==Character.toLowerCase(pair.charAt(0))).findFirst()
+                .ifPresent(x->System.out.println(x));
     }
 }
 /*

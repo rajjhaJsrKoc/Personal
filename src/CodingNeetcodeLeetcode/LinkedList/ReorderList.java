@@ -12,9 +12,9 @@ public class ReorderList {
         LinkedList slow = list;
         LinkedList fast = list;
 
-        while (fast.next!= null && fast!= null){
+        while (fast != null && fast.next != null) {
             slow = slow.next;
-            fast= fast.next.next;
+            fast = fast.next.next;
         }
         // split it rajat
         LinkedList second = reverseList(slow.next);

@@ -41,6 +41,17 @@ public class TwoSumLeetcode {
         return false; // not found
     }
 
+    public static void twoSumPrint(int[] nums, int target) {
+        Map<Integer, Integer> seen = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (seen.containsKey(complement)) {
+               System.out.println(complement+" "+ nums[i]);
+            }
+            seen.put(nums[i], i);
+        }
+    }
+
     public static int prefixSum(int[] nums, int target) {
         Map frequency = new HashMap();
         frequency.put(0, 1);
@@ -67,7 +78,7 @@ public class TwoSumLeetcode {
         System.out.println("This is the answer for variant 1: " + ans);
         returnSubarraysIndexs(arr,target);
         returnSubarrays(arr,target);
-
+        twoSumPrint(arr,target);
     }
 
     private static void returnSubarraysIndexs(int[] arr, int target) {

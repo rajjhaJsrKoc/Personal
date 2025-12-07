@@ -10,7 +10,12 @@ public class AddTwoNumbers {
         l2.next = new LinkedList(6);
         l2.next.next = new LinkedList(4);
 
-        addTwoNumbers(l1, l2);
+        LinkedList node = addTwoNumbers(l1, l2);
+
+        while (node!= null){
+            System.out.println(node.d);
+            node = node.next;
+        }
 
     }
     public static LinkedList addTwoNumbers(LinkedList l1, LinkedList l2) {

@@ -26,7 +26,6 @@ public class PascalTriangle {
             res = res/j;
             rowResult.add(res);
         }
-        //rowResult.add(1);
         return rowResult;
     }
 }

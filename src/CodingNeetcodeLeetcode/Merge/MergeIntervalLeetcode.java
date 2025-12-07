@@ -12,8 +12,8 @@ public class MergeIntervalLeetcode {
     private static void mergeInterval(int[][] interval) {
         if(interval.length<=1)
             return;
-        Arrays.sort(interval,Comparator.comparingInt(i -> i[0]));
-        //Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        //Arrays.sort(interval,Comparator.comparingInt(i -> i[0]));
+        Arrays.sort(interval, (a, b) -> Integer.compare(a[0], b[0]));
         ArrayList<int[]> res = new ArrayList<>();
         int[] newInterval = interval[0];
         res.add(newInterval);

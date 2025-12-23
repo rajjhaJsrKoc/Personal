@@ -1,3 +1,4 @@
+
 ---
 
 # Personal Java Practice Repository
@@ -15,7 +16,7 @@ This repo is mainly used for **learning, interview preparation, and quick revisi
 
 ## 📌 Topics Covered
 
-* NeetCode 150 problems (Arrays, Strings, Trees, Graphs, DP, Graph tree and DP in progress.)
+* NeetCode 150 problems (Arrays, Strings, Trees, Graphs, DP, etc.)
 * Java 8 (Streams, Lambdas, Optional, Collectors)
 * Kafka fundamentals and internal working
 * Spring & Spring Boot (core concepts, microservices basics)

@@ -300,6 +300,32 @@ public class FrequencyMap {
         IntStream.range(0,s6.length()-1).mapToObj(i -> s6.substring(i, i+2))
                 .filter(pair ->Character.toLowerCase(pair.charAt(1))==Character.toLowerCase(pair.charAt(0))).findFirst()
                 .ifPresent(x->System.out.println(x));
+
+        System.out.println("32. find max in department also group it by employee id department ID");
+        Deparment d1 = new Deparment("HR",1);
+        Deparment d2 = new Deparment("HR",1);
+        Employee e1 = new Employee("E1",d1,100);
+        Employee e2 = new Employee("E1",d1,100);
+        List<Employee> employeeList = List.of(e1,e2);
+        Map<Deparment, List<Employee>> employeByDepartment =
+                employeeList.stream().collect(Collectors.groupingBy(Employee::getDeparmentNew));
+
+        employeByDepartment.entrySet().stream().forEach(entry -> {
+            System.out.println("Department: " + entry.getKey());
+            entry.getValue().forEach(System.out::println);});
+
+        employeByDepartment.forEach((department, employes) -> {
+            System.out.println("Department: " + department);
+            employes.forEach(emp ->
+                    System.out.println(
+                            "  Employee: " + emp.getName() +
+                                    ", Salary: " + emp.getSalary()
+                    )
+            );
+        });
+        Map<Deparment, Optional<Employee>> highestSalary =
+                employeeList.stream().collect(Collectors.groupingBy(Employee::getDeparmentNew
+                        ,Collectors.maxBy(Comparator.comparing(Employee ::getSalary))));
     }
 }
 /*

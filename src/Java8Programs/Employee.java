@@ -6,6 +6,12 @@ public class Employee {
         this.department = department;
     }
 
+    public Employee(String name, Deparment deparmentNew, double salary) {
+        this.name = name;
+        this.deparmentNew = deparmentNew;
+        this.salary = salary;
+    }
+
     public String getName() {
         return name;
     }
@@ -35,6 +41,15 @@ public class Employee {
     }
 
     private String department;
+    private Deparment deparmentNew;
+
+    public Deparment getDeparmentNew() {
+        return deparmentNew;
+    }
+
+    public void setDeparmentNew(Deparment deparmentNew) {
+        this.deparmentNew = deparmentNew;
+    }
 
     @Override
     public String toString() {

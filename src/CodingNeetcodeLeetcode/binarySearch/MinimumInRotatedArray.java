@@ -2,7 +2,7 @@ package CodingNeetcodeLeetcode.binarySearch;
 
 public class MinimumInRotatedArray {
     public static void main(String[] args){
-        int[] arr = {3,4,5,1,2,};
+        int[] arr = {3,4,5,1,2};
         int ans = Integer.MAX_VALUE;
         int low =0,high= arr.length-1;
         while(low<=high){

@@ -371,4 +371,324 @@ public User findById(Long id) { ... }
 * Monolith → single deployable.
 * Microservices → independent services with APIs.
 
+Got it, Rajat 👍
+Here are **clear, interview-ready answers** for **each question**, explained **simply + with Spring Boot context** (Java / microservices friendly).
+
+---
+
+## 🌱 **Basics**
+
+### **1. What is Spring Boot?**
+
+Spring Boot is an extension of the Spring Framework that **simplifies building production-ready applications** by providing:
+
+* Auto-configuration
+* Embedded servers (Tomcat/Jetty)
+* Opinionated defaults
+* Minimal XML / boilerplate
+
+👉 You can run a Spring Boot app using just `main()`.
+
+---
+
+### **2. Difference between Spring and Spring Boot**
+
+| Spring                        | Spring Boot          |
+| ----------------------------- | -------------------- |
+| Requires manual configuration | Auto-configuration   |
+| Needs external server         | Embedded server      |
+| More boilerplate              | Minimal setup        |
+| No defaults                   | Opinionated defaults |
+
+---
+
+### **3. What is `@SpringBootApplication`?**
+
+It is a **meta-annotation** combining:
+
+```java
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan
+```
+
+👉 It marks the **main entry point** of a Spring Boot app.
+
+---
+
+### **4. What are Spring Boot starters?**
+
+Starters are **predefined dependency bundles** that simplify Maven/Gradle configuration.
+
+Example:
+
+```xml
+spring-boot-starter-web
+```
+
+Includes:
+
+* Spring MVC
+* Jackson
+* Embedded Tomcat
+
+---
+
+### **5. How does Spring Boot auto-configuration work?**
+
+Spring Boot:
+
+1. Reads classpath dependencies
+2. Applies conditional configurations using `@ConditionalOnClass`
+3. Creates beans automatically
+
+Example:
+
+* If `spring-webmvc` exists → MVC auto-configured
+
+---
+
+### **6. Difference between `@Controller` and `@RestController`**
+
+| @Controller             | @RestController          |
+| ----------------------- | ------------------------ |
+| Returns view (HTML/JSP) | Returns JSON/XML         |
+| Needs `@ResponseBody`   | Includes `@ResponseBody` |
+| Used in MVC apps        | Used in REST APIs        |
+
+---
+
+### **7. What is Dependency Injection (DI)?**
+
+DI is a design principle where **objects are provided dependencies instead of creating them**.
+
+Example:
+
+```java
+@Autowired
+private UserService userService;
+```
+
+👉 Improves testability and loose coupling.
+
+---
+
+### **8. What is Inversion of Control (IoC)?**
+
+IoC means **Spring manages object creation and lifecycle**, not the developer.
+
+* You define beans
+* Spring injects them
+
+DI is a **type of IoC**.
+
+---
+
+### **9. What is `@Bean` annotation?**
+
+Used to define a **Spring-managed bean** manually.
+
+```java
+@Bean
+public ObjectMapper objectMapper() {
+    return new ObjectMapper();
+}
+```
+
+---
+
+### **10. What is `@Configuration` annotation?**
+
+Marks a class as a **source of bean definitions**.
+
+```java
+@Configuration
+public class AppConfig {
+}
+```
+
+👉 Works like XML config but in Java.
+
+---
+
+## 🌐 **REST & APIs**
+
+### **11. How to create a REST API in Spring Boot?**
+
+Steps:
+
+1. Add `spring-boot-starter-web`
+2. Create a controller
+3. Map endpoints
+
+```java
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+    @GetMapping
+    public List<User> getUsers() {
+        return userService.getAllUsers();
+    }
+}
+```
+
+---
+
+### **12. Difference between GET, POST, PUT, DELETE**
+
+| Method | Purpose                |
+| ------ | ---------------------- |
+| GET    | Fetch data             |
+| POST   | Create resource        |
+| PUT    | Update entire resource |
+| DELETE | Remove resource        |
+
+---
+
+### **13. `@RequestMapping` vs `@GetMapping`**
+
+| @RequestMapping                 | @GetMapping     |
+| ------------------------------- | --------------- |
+| Generic                         | Specific to GET |
+| Verb needs explicit declaration | Cleaner         |
+| Older style                     | Preferred       |
+
+```java
+@GetMapping("/users")
+```
+
+---
+
+### **14. How does Spring Boot handle JSON serialization?**
+
+Spring Boot uses **Jackson** by default.
+
+* Converts Java objects ↔ JSON automatically
+* Uses `HttpMessageConverters`
+
+No extra configuration needed.
+
+---
+
+### **15. What is `ResponseEntity`?**
+
+It represents the **entire HTTP response**.
+
+```java
+return ResponseEntity
+       .status(HttpStatus.CREATED)
+       .body(user);
+```
+
+Allows:
+
+* Status code
+* Headers
+* Body
+
+---
+
+### **16. `@PathVariable` vs `@RequestParam`**
+
+| PathVariable     | RequestParam    |
+| ---------------- | --------------- |
+| Part of URL path | Query parameter |
+| Mandatory        | Optional        |
+| RESTful          | Filtering       |
+
+```java
+/users/{id}
+```
+
+vs
+
+```java
+/users?id=10
+```
+
+---
+
+### **17. What is `@RequestBody`?**
+
+Binds incoming JSON request body to a Java object.
+
+```java
+@PostMapping
+public User save(@RequestBody User user) {
+}
+```
+
+---
+
+### **18. Exception handling in REST APIs (`@ControllerAdvice`)**
+
+Global exception handling across controllers.
+
+```java
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<String> handle() {
+        return ResponseEntity.status(404).body("Not Found");
+    }
+}
+```
+
+---
+
+### **19. What is HATEOAS in Spring Boot?**
+
+HATEOAS = **Hypermedia As The Engine Of Application State**
+
+* API responses contain **links**
+* Helps clients navigate dynamically
+
+Example:
+
+```json
+{
+  "id": 1,
+  "links": [
+    { "rel": "self", "href": "/users/1" }
+  ]
+}
+```
+
+---
+
+### **20. What is CORS and how to configure it?**
+
+CORS allows **cross-origin requests** (frontend ↔ backend).
+
+#### Method level:
+
+```java
+@CrossOrigin(origins = "http://localhost:3000")
+```
+
+#### Global:
+
+```java
+@Bean
+public WebMvcConfigurer corsConfigurer() {
+    return new WebMvcConfigurer() {
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**").allowedOrigins("*");
+        }
+    };
+}
+```
+
+---
+
+If you want, I can:
+
+* 🔥 Convert this into **quick one-liner answers**
+* 📌 Add **real interview follow-up questions**
+* 🧠 Map these to **microservices scenarios**
+* 📝 Create a **PDF / notes format**
+
+Just tell me 👌
+
 ---

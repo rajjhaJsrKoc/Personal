@@ -12,7 +12,8 @@ public class EvenOddThreads {
                     wait();
                 }
                 if (number <= MAX) {
-                    System.out.println("Odd: " + number);
+                    //System.out.println("Odd: " + number);
+                    System.out.println(Thread.currentThread().getName() + " is printing odd number: " + number);
                     number++;
                     notifyAll();
                 }
@@ -30,7 +31,8 @@ public class EvenOddThreads {
                     wait();
                 }
                 if (number <= MAX) {
-                    System.out.println("Even: " + number);
+                    //System.out.println("Even: " + number);
+                    System.out.println(Thread.currentThread().getName() + " is printing even number: " + number);
                     number++;
                     notifyAll();
                 }
